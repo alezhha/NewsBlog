@@ -1,0 +1,103 @@
+body{
+    margin: 0 auto;
+}
+
+header nav{
+    background-color: darkgray;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+header nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    padding: 0px 15px 0px 15px;
+}
+
+.noposts{
+    margin: 0px auto;
+    font-size: 70px;
+}
+
+.Error-No-Posts{
+    margin: 100px 255px;
+}
+
+.make-post{
+    padding-top: 20px;
+    margin: 50px 100px;
+    background-color: rgb(172, 253, 152);
+    border-radius: 20px;
+}
+
+.post-title{
+    margin-right: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.post-author{
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.post-text{
+    margin-top: 10px;
+    width: 435px;
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.post-up{
+    font-size: 30px;
+    color: rgb(73, 73, 73);
+}
+
+.post-button{
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    margin-bottom: 50px;
+}
+
+
+.container{
+    margin: 0 auto;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.blogs-main{
+    border-top: yellowgreen 2px solid;
+    margin: 100px auto;
+    max-width: 1200px;
+}
+
+.post-title_{
+    margin: 10px 40px 5px;
+    font-size: 30px;
+}
+.post-text_{
+    margin: 10px 10px 5px;
+}
+.post-author_{
+    margin: 40px 0 5px;
+    color: grey;
+    font-size: 15px;
+}
+.post-created_at_{
+    margin: 0px 0;
+    color: grey;
+    font-size: 15px;
+}
