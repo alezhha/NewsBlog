@@ -5,5 +5,6 @@ from .models import Posts
 
 class PostsAdmin(admin.ModelAdmin):
     list_display = ("title", "author")
+    list_filter = ("created_at", )
 
 admin.site.register(Posts, PostsAdmin)

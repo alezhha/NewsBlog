@@ -3,36 +3,48 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
 <header>
-    <nav>
+    <nav style="display: flex; justify-content: space-between;">
+        <div style="margin-left: 480px;">
         <a href="#">Projects</a>
-        <a href="#">Testimonicals</a>
-        <a href="#">Shop</a>
+        <a href="{% url 'newPost' %}">New post</a>
+        <a href="{% url 'main' %}">Main</a>
         <a href="#">About</a>
-        <a href="#">Menu</a>
+        </div>
+        {% if request.user.is_authenticated %}
+            <form method="GET" action="{% url 'signout' %}">
+                <button type="submit">Выход</button>
+            </form>
+        {% else %}
+        <div style="display: flex; margin-right: 150px;">
+            <form method="GET" action="{% url 'signin' %}">
+                <button class="signin-button" type="submit">Вход</button>
+            </form>
+            <form method="GET" action="{% url 'register' %}">
+                <button class="register-button" type="submit">Регистрация</button>
+            </form>
+        </div>
+        {% endif %}
     </nav>
 </header>
 
-<form action="makePost/" method="POST">
-    <div class="container">
-        <div class="make-post">
-            <p class="post-up">New Post!</p>
-            <input type="text" placeholder="Title of Post" name="title" class="post-title">
-            <input type="text" placeholder="Author, (You!)" name="author" class="post-author">
-            <br>
-            <textarea type="text" placeholder="Text of Post" name="text" class="post-text"></textarea>
-            <br>
-            <button class="post-button" type="submit">Save</button>
-        </div>
-    </div>
-</form>
+{% block content %} {% endblock %}
+
+<div class="container">
+    <h1 style="margin-top: 100px;">All Posts</h1>
+</div>
 
 {% if posts.count > 0 %}
     {% for post in posts %} 
@@ -42,10 +54,19 @@
                 <p class="post-text_">{{ post.text }}</p>
                 <p class="post-author_">Author: {{ post.author }}</p>
                 <p class="post-created_at_">Creation time: {{ post.created_at }}</p>
+                {% if request.user.username == post.author or request.user.username == "grisha" %} 
+
+                <!-- grisha is admin! so admin has all admin roots. -->
+
+                    <a href="delete/{{post.id}}">
+                        <button class="delete-button">Delete</button>
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
 {% endif %}
+
 
 {% if posts.count == 0 %}
 <div class="Error-No-Posts">
@@ -53,5 +74,7 @@
     <p style="margin: 0 215px auto; font-size: 30px; color: gray;" >But you can easily fix this, <a style="color: rgb(98, 180, 102); text-decoration: none;" href="#makepost">make a post!</a></p>
 </div>
 {% endif %}
+
+
 </body>
 </html>

@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap" rel="stylesheet">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} New Post {% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+    <form action="makePost/" method="POST">
+        <div class="container">
+            <div class="make-post">
+                <p class="post-up">New Post!</p>
+                <input type="text" placeholder="Title of Post" name="title" class="post-title">
+                <br>
+                <textarea type="text" placeholder="Text of Post" name="text" class="post-text"></textarea>
+                <br>
+                <button class="post-button" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+</body>
+</html>
